@@ -1,0 +1,271 @@
+<!-- 2 array to one object  -->
+
+
+
+
+
+
+<!-- <html>
+<head>
+ <title>Create Object from Arrays</title>
+</head>
+<body>
+ <h1>Object from Arrays</h1>
+ <p id="result"></p> 
+ <script>
+ 
+ let keys = ['name', 'age', 'city'];
+ let values = ['Alice', 30, 'New York'];
+
+ let obj = {};
+ keys.forEach((key, index) => obj[key] = values[index]);
+ 
+ document.getElementById('result').innerText = JSON.stringify(obj);
+ </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- find the object by id -->
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<h2>Find User by ID</h2>
+
+<input type="number" id="userId" placeholder="Enter ID">
+<button onclick="findUser()">Find User</button>
+
+<p id="result">Result will appear here</p>
+
+<script>
+const users = [
+    { id: 1, name: "Alice", age: 25 },
+    { id: 2, name: "Bob", age: 30 },
+    { id: 3, name: "Charlie", age: 22 }
+];
+
+function findUser() {
+    // Get the ID from input and convert to number
+    const id = parseInt(document.getElementById("userId").value);
+    
+    // Find the user
+    const user = users.find(u => u.id === id);
+    
+    // Display result
+    const resultElement = document.getElementById("result");
+    if (user) {
+        resultElement.textContent = `User found: ${user.name}, Age: ${user.age}`;
+    } else {
+        resultElement.textContent = "User not found";
+    }
+}
+</script>
+
+</body>
+</html> -->
+
+
+<!-- Program to create a 2d array into an object in javascript. -->
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>2D Array to Object Converter</h2>
+
+<button onclick="convertArray()">Convert Array</button>
+
+<p id="result"></p>
+
+<script>
+function convertArray() {
+    // Sample 2D array where each sub-array contains [key, value] pairs
+    const array2D = [
+        ['name', 'John'],
+        ['age', 30],
+        ['city', 'New York'],
+        ['isStudent', false]
+    ];
+
+    // Convert 2D array to object
+    const resultObj = {};
+    for (const [key, value] of array2D) {
+        resultObj[key] = value;
+    }
+
+    // Display the result
+    document.getElementById("result").textContent = JSON.stringify(resultObj, null, 2);
+}
+</script>
+
+</body>
+</html> -->
+
+
+
+  <!-- 2D ARRAY TO BJECTS -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>2d array to object </h1>
+    <button onclick="convertArray()">CONVERT</button>
+    <pre id="result"></pre>
+    <script>
+        function convertArray(){
+            const arr= [
+        ['name', 'John'],
+        ['age', 30],
+        ['city', 'New York'],
+        ['isStudent', false]
+    ];
+    const obj={};
+    for(const [key,value] of arr){
+        obj[key]=value;
+    }
+    document.getElementById('result').textContent=JSON.stringify(obj,null,2)
+    }
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!-- count occurences -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Letter Counter</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        #output { background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 20px; }
+        .letter { display: inline-block; margin: 5px; padding: 5px 10px; background: #e0e0e0; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h2>Letter Counter</h2>
+    <input type="text" id="textInput" value="Hello World" placeholder="Enter text">
+    <button onclick="countAndDisplay()">Count Letters</button>
+    <div id="output"></div>
+
+    <script>
+        function countLetters(str) {
+            const count = {};
+            for (const char of str.toLowerCase()) {
+                if (/[a-z]/.test(char)) {
+                    count[char] = (count[char] || 0) + 1;
+                }
+            }
+            return count;
+        }
+
+        function countAndDisplay() {
+            const text = document.getElementById('textInput').value;
+            const result = countLetters(text);
+            
+            // Display in console
+            console.log(result);
+            
+            // Display on page
+            let output = '';
+            for (const [letter, count] of Object.entries(result)) {
+                output += `<span class="letter">${letter}: ${count}</span>`;
+            }
+            document.getElementById('output').innerHTML = output || 'No letters found';
+        }
+
+        // Run on page load
+        countAndDisplay();
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!-- bill -->
+
+<!-- 
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+
+function ElectricityBillCalculator() {
+  const [units, setUnits] = useState("");
+  const [price, setPrice] = useState("");
+  const [discount, setDiscount] = useState("");
+  const [bill, setBill] = useState(null);
+
+  const calculateBill = () => {
+    const total = Number(units) * Number(price);
+    const finalBill = total - (total * Number(discount) / 100);
+    setBill(finalBill.toFixed(2));
+  };
+
+  return (
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h2>Electricity Bill Calculator</h2>
+      <input type="number" placeholder="Units" value={units} onChange={(e) => setUnits(e.target.value)} />
+      <br /><br />
+      <input type="number" placeholder="Price per Unit" value={price} onChange={(e) => setPrice(e.target.value)} />
+      <br /><br />
+      <input type="number" placeholder="Discount (%)" value={discount} onChange={(e) => setDiscount(e.target.value)} />
+      <br /><br />
+      <button onClick={calculateBill}>Calculate</button>
+      {bill !== null && <h3>Total Bill: ₹{bill}</h3>}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<ElectricityBillCalculator />); -->
+
+
+
+<!-- weather -->
+
+
+<!-- import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+function Climate() {
+ const [climate, setClimate] = useState("Sunny");
+
+ return (
+ <>
+ <h1>Weather Report: {climate}!</h1>
+ <button
+ type="button"
+ onClick={() => setClimate("Rain")}
+ >-20</button>
+ <button
+ type="button"
+ onClick={() => setClimate("Moderate")}
+ >31</button><button
+ type="button"
+ onClick={() => setClimate("Sunny")}
+ >33</button>
+ <button
+ type="button"
+ onClick={() => setClimate("Hot")}
+ >45</button>
+ </>);}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Climate/>); -->
+
